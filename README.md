@@ -27,8 +27,8 @@ The model was trained using two GPUs Nvidia GeForce RTX 2080Ti and the following
 Apache License Version 2.0(see LICENSE).
 
 # Cite us
-  @misc{Lei Huang2023dataset,
-  title={Construction Waste Landfill Dataset of Two Districts in Beijing, China from GF-2 satellite images},
-  author={Lei Huang, Shaofu Lin, Xiliang Liu},
-  year={2023},
-}
+    @misc{Lei Huang2023dataset,
+    title={Construction Waste Landfill Dataset of Two Districts in Beijing, China from GF-2 satellite images},
+    author={Lei Huang, Shaofu Lin, Xiliang Liu},
+    year={2023},
+    }
