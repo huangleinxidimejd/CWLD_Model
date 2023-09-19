@@ -3,7 +3,8 @@
 ![网络模型](https://github.com/huangleinxidimejd/CWLD_Model/assets/42790126/228cbb85-ab7b-4330-a600-7dec89192857)
 
 ## Data
-The dataset used to train the model is the CWLD dataset published on Zenodo.[]
+The dataset used to train the model is the CWLD dataset published on Zenodo.
+https://zenodo.org/record/8333888
 
 ## Training details
 The model was trained using two GPUs Nvidia GeForce RTX 2080Ti and the following parameters:  
