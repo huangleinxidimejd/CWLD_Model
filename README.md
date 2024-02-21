@@ -24,6 +24,17 @@ The model was trained using two GPUs Nvidia GeForce RTX 2080Ti and the following
 * Open: CWLD_ Open the root in: CWLD_model/dataset/ and start training with the WasteSeg_Train.py file. The modelss module provides five kinds of convolutional networks: Improved_DeeplabV3_plus, PSPNet, ResNet, SegNet and UNet, which can be selected and modified accordingly.  
 * The utils package provides a large number of data processing tools for use.  
 * The trained model can be predicted by EvalSeg.py file.
+
+## Detailed description of utils package
+* Acc_F1_chart.py
+
+      The main purpose of this code is to plot the F1 scores (accuracy) curves of four neural network models (Deeplabv3, PSPNet, SegNet, UNet) at different number of iterations (Epoch).
+      First, it creates a list x_all containing 200 elements,and then uses the zip() function to pair x_all with the F1 scores of the four models, stored in line1, line2, line3, and line4.
+      Next, use the matplotlib library to plot these four curves, using different colors, markers, line types, and line widths for each curve. Finally, add a legend for each curve and save the plotted image as a file named "F1.png".
+* calculat_mean_std.py
+
+
+
 # License
 Apache License Version 2.0(see LICENSE).
 
