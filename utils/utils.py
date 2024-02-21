@@ -162,7 +162,7 @@ def ConfMap(output, pred):
     return conf
 
 
-# 多分类问题准确率
+# Accuracy of multiclassification problems
 def accuracy(pred, label):
     valid = (label > 0)
     acc_sum = (valid * (pred == label)).sum()
@@ -172,9 +172,9 @@ def accuracy(pred, label):
 
 
 def align_dims(np_input, expected_dims=2):
-    # 计算输入数组的维度
+    # Calculate the dimension of the input array
     dim_input = len(np_input.shape)
-    # 将输出数组的维度初始化为输入数组维度
+    # Initialize the dimension of the output array to the dimension of the input array
     np_output = np_input
 
     if dim_input>expected_dims:
@@ -185,13 +185,13 @@ def align_dims(np_input, expected_dims=2):
     return np_output
 
 
-# 计算二分类问题准确率
+# Calculating the accuracy of a binary classification problem
 def binary_accuracy(pred, label):
     print("pred", pred.shape)
     print("lable", label.shape)
     """
-    具体来说，align_dims函数可能是用来处理维度不匹配的情况，将维度调整为二维。
-    pred和label变量经过这个函数后，变成了类似于(batch_size, num_classes)的形状。
+    Specifically, the align_dims function is probably used to handle dimension mismatches by adjusting the dimensions to two dimensions.
+    The pred and label variables go through this function and become shaped like (batch_size, num_classes).
     """
     pred = align_dims(pred, 2)
     label = align_dims(label, 2)
@@ -220,7 +220,7 @@ def binary_accuracy(pred, label):
     return acc, precision, recall, F1, IoU
 
 
-# 计算多分类问题准确率及其他指标
+# Calculate the accuracy of multiclassification problems and other metrics
 def multi_category_accuracy(pred, label, num_classes):
     valid = (label > 0)
     acc_sum = (valid * (pred == label)).sum()
@@ -267,7 +267,7 @@ def multi_category_accuracy(pred, label, num_classes):
     return acc, precisions[3], recalls[3], F1, IoUs[3], BERs[3]
 
 
-# 计算多分类问题准确率及其他指标
+# Calculate the accuracy of multiclassification problems and other metrics
 def multi_category_accuracy_ap(pred, label, num_classes):
     valid = (label > 0)
     acc_sum = (valid * (pred == label)).sum()
@@ -305,7 +305,7 @@ def multi_category_accuracy_ap(pred, label, num_classes):
     return acc, precisions[3], recalls[3], F1, IoUs[3]
 
 
-"""此函数通过将预测标签与真实标签进行比较来计算 softmax 输出的二进制精度"""
+"""This function calculates the binary precision of the softmax output by comparing the predicted labels to the true labels"""
 def binary_accuracy_softmax(pred, label):
     valid = (label < 2)
     acc_sum = (valid * (pred == label)).sum()
