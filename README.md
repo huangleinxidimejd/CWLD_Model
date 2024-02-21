@@ -146,7 +146,63 @@ The model was trained using two GPUs Nvidia GeForce RTX 2080Ti and the following
 
       This code defines several functions whose main function is to flip, rotate and crop the image for processing image data.
 
+* utils.py
+
+      The provided code defines several utility functions for image processing, batch processing, evaluation metrics, and data manipulation in the context of image segmentation tasks. Let's go through the main functions:
+      * get_square(img, pos): Extracts a left or right square from an image.
+      * split_img_into_squares(img): Splits an image into left and right squares.
+      * hwc_to_chw(img): Transposes the dimensions of an image from (H, W, C) to (C, H, W).
+      * resize_and_crop(pilimg, scale=0.5, final_height=None): Resizes and crops a PIL image.
+      * batch(iterable, batch_size): Yields batches from an iterable.
+      * seprate_batch(dataset, batch_size): Splits a dataset into batches.
+      * split_train_val(dataset, val_percent=0.05): Splits a dataset into training and validation sets.
+      * normalize(x): Normalizes pixel values of an image to the range [0, 1].
+      * merge_masks(img1, img2, full_w): Merges two masks horizontally.
+      * rle_encode(mask_image): Run-length encoding for mask images.
+      * AverageMeter: Class for computing and storing the average and current values.
+      * ImageValStretch2D(img): Scales pixel values of an image.
+      * ConfMap(output, pred): Computes a confidence map based on the model output and predictions.
+      * accuracy(pred, label): Computes accuracy for multi-class problems.
+      * align_dims(np_input, expected_dims=2): Aligns the dimensions of a NumPy array.
+      * binary_accuracy(pred, label): Computes accuracy for binary classification.
+      * binary_accuracy_softmax(pred, label): Computes accuracy for softmax output in binary classification.
+      * intersectionAndUnion(imPred, imLab, numClass): Computes intersection and union for evaluation metrics.
+      * CaclTP(imPred, imLab, numClass): Computes true positives for evaluation metrics.
+      * multi_category_accuracy(pred, label, num_classes): Computes accuracy for multi-class problems with additional metrics.
+      * multi_category_accuracy_ap(pred, label, num_classes): Computes accuracy for multi-class problems with additional metrics, including average precision.
+      * These functions are designed to be used in the context of image segmentation and classification tasks, providing various utility and evaluation functionalities.
+
+* voc_compute_pixel.py
+
+      The main function of this code is to count the number of categories of all images under the VOCdevkit_path path.
+
+      * First, import the required libraries: os, random, numpy, PIL (Python Imaging Library) and tqdm.
+      * Set VOCdevkit_path to 'F:/CWLD_model/data/pred/'.
+      * In the main function, first set the random number seed to 0,then get all the filenames under the VOCdevkit_path path and store them in the total_seg list.
+      * Initialize an all-zero array classes_nums of length 256 to store the number of each class.
+      * Use tqdm to create a progress bar that iterates through each filename in the total_seg list.
+      * For each filename, splice into the full file path and check if the file exists. If it does not exist, a ValueError exception is thrown.
+      * Open the picture file using the PIL library and convert it to a numpy array with an unsigned 8-bit integer data type.
+      * Check if the shape of the image is greater than 2, and if so, print a warning message prompting the user to check the dataset format. Also, state that the labeled image needs to be a grayscale or eight-bit color image and that the value of each pixel point indicates the category to which the pixel point belongs.
+      * Spread the image data into a one-dimensional array and use the np.bincount function to count the number of each category and accumulate the results into the classes_nums array.
+      * Finally, print out each category and its corresponding number.
+
+* voc_RGB.py
   
+      The main function of this code is to count the number of blue, red, black and white pixels of all images in a folder and write the result to a text file.
+      * First, import the required libraries such as os, numpy, PIL (Python Imaging Library) and skimage.
+      * Set the folder path to 'E:/'.
+      * Get the paths of all files ending in .png in the folder and store them in the image_paths list.
+      * Initialize four counter variables for the number of blue, red, black and white pixels.
+      * Iterates through each image file path in the image_paths list, opens the image using the PIL library, and adds it to the images list.
+      * Prints the number of images that have been read.
+      * Iterates over each image in the images list, sets the pixel values to be counted (blue, red, black, and white), and converts the image to RGB mode (if not already converted).
+      * Initialize four counter variables to count the number of pixels of each color in the current image.
+      * Iterate over each pixel in the image, check its color value and update the counter variables accordingly.
+      * Prints the number of pixels of each color in the current image.
+      * Accumulates the number of pixels of each color in the current image into the total counter variable.
+      * At the end of the loop, print the total number of blue, red, black, and white pixels and their totals.
+      * Write the results to a text file named 'E:/XX.txt'.
 
 # License
 Apache License Version 2.0(see LICENSE).
